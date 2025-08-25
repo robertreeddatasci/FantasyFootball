@@ -1,0 +1,35 @@
+| Round   | Filter Logic Using Flags                                                           |
+| ------- | ---------------------------------------------------------------------------------- |
+| 1–2     | Position in \[RB, WR], ignore rookie/handcuff/lottery unless top-ranked            |
+| 3–5     | Position in \[RB, WR], consider elite QB/TE if top-ranked, rookie/lottery optional |
+| 6–8     | Include rookies, handcuffs, lottery tickets along with remaining top WR/RB         |
+| 9+      | Focus mostly on rookies, lottery tickets, and handcuffs for bench spots            |
+| Final 2 | Filter for K or D/ST only                                                          |
+
+
+| Phase          | Focus                                                                          |
+| -------------- | ------------------------------------------------------------------------------ |
+| Rounds 1–2     | Highest-ranked WR/RB available                                                 |
+| Rounds 3–5     | Continue top WR/RB, but grab QB/TE if they’re elite and underpicked            |
+| Rounds 6–8     | Mix of top WR/RB + consider high-upside rookies, lottery tickets, or handcuffs |
+| Rounds 9+      | Focus on upside players (lottery tickets, rookies, handcuffs), fill bench      |
+| Final 2 rounds | Best available defense and kicker                                              |
+
+
+
+| Flag               | Type                         | Purpose                                                                            |
+| ------------------ | ---------------------------- | ---------------------------------------------------------------------------------- |
+| **Position**       | QB / RB / WR / TE / K / D/ST | Filter by draft needs per round                                                    |
+| **Rookie**         | Yes / No                     | Identify potential lottery tickets or breakout candidates                          |
+| **Handcuff**       | Yes / No                     | Identify injury-insurance picks for key starters                                   |
+| **Lottery Ticket** | Yes / No                     | High-upside players for mid-to-late rounds                                         |
+| **Tier**           | Integer / string             | Optional: group players into tiers for quick comparison (Top 5 RB, RB2, WR3, etc.) |
+| **Team**           | String                       | Optional: use for scheme context (pass-heavy / run-heavy)                          |
+| **ADP**            | Float                        | Optional: helps anticipate when a player is likely to be drafted                   |
+
+
+Here's what I'm going to do.
+1. Query Sleeper API for all players data.
+2. Go to FantasyPros. Download the main player rankings list. 
+3. Identify players that are Rookie's Handcuffs and Lottery tickets
+4. Implement some kind of strategy helper for draft day.
