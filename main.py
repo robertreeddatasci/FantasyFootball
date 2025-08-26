@@ -151,21 +151,39 @@ def join_to_get_ranked_order(df_left, df_right):
 
     return df_merged
 
-def join_check(df_left, df_right):
-    # Normalize names for merging
-    df_left["PLAYER NAME_CLEAN"] = df_left["PLAYER NAME"].apply(strip_suffix).str.lower().str.strip()
-    df_right["full_name_clean"] = df_right["full_name_clean"].str.lower().str.strip()
+def join_check(df_left, df_right, use_fuzzy=True):
+    """
+    Checks for unmatched names after merging.
 
-    df_merged = pd.merge(
-        df_left,
-        df_right,
-        how="left",
-        left_on="PLAYER NAME_CLEAN",
-        right_on="full_name_clean",
-        indicator=True
-    )
-    unmatched_left = df_merged[df_merged["_merge"] == "left_only"]
-    print("Unmatched names:", unmatched_left["PLAYER NAME"].tolist())
+    If use_fuzzy=True, it relies on the 'Matched Name' column
+    produced by fuzzy matching. Otherwise, it does a direct merge.
+    """
+    if use_fuzzy:
+        if "Matched Name" not in df_left.columns:
+            raise ValueError("Column 'Matched Name' not found. Run join_to_get_ranked_order first.")
+        
+        unmatched_left = df_left[df_left["Matched Name"].isna()]
+        if len(unmatched_left) == 0:
+            print("🎉 All names matched (fuzzy match).")
+        else:
+            print("Unmatched names (fuzzy match):", unmatched_left["PLAYER NAME"].tolist())
+    else:
+        # Direct merge check
+        df_left["PLAYER NAME_CLEAN"] = df_left["PLAYER NAME"].apply(strip_suffix)
+        df_merged = pd.merge(
+            df_left,
+            df_right,
+            how="left",
+            left_on="PLAYER NAME_CLEAN",
+            right_on="full_name_clean",
+            indicator=True
+        )
+        unmatched_left = df_merged[df_merged["_merge"] == "left_only"]
+        if len(unmatched_left) == 0:
+            print("🎉 All names matched (exact merge).")
+        else:
+            print("Unmatched names (exact merge):", unmatched_left["PLAYER NAME"].tolist())
+
 
 # ===============================
 # Main Execution
