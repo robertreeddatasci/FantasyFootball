@@ -206,4 +206,5 @@ if __name__ == "__main__":
 
     # Perform fuzzy merge and check unmatched
     merged = join_to_get_ranked_order(fantasy_pros_rankings_ppr, df_cleaned)
+    merged.to_csv("output.csv")
     join_check(fantasy_pros_rankings_ppr, df_cleaned)
