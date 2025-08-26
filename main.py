@@ -63,13 +63,33 @@ def get_updated_player_data():
 
     return df
 
+def clean_df(df):
+    # Main columns in the order you want
+    main_columns = [
+        "player_id", "full_name", "first_name", "last_name", "position", 
+        "team", "team_abbr", "fantasy_positions", "active", "status",
+        "age", "height", "weight", "college", "years_exp",
+        "injury_status", "injury_notes", "injury_body_part",
+        "practice_description", "practice_participation",
+        "birth_city", "birth_state", "birth_country", "birth_date"
+    ]
+
+    # Add any remaining columns that exist in the DataFrame but aren't in main_columns
+    final_columns = main_columns + [col for col in df.columns if col not in main_columns]
+
+    # Reorder DataFrame
+    df_ordered = df[final_columns]
+
+    # Save CSV
+    df_ordered.to_csv("nfl_players_ordered.csv", index=False)
+    print("Saved nfl_players_ordered.csv!")
+    return df_ordered
+
+
 if __name__ == "__main__":
     df = get_updated_player_data()
-    print(len(df.columns))
-
-
-
-
+    df_cleaned = clean_df(df)
+    print(df_cleaned.head())
 
 
 
