@@ -106,7 +106,7 @@ def clean_df(df, include_defenses=True):
     ]
 
     final_columns = main_columns + [col for col in df.columns if col not in main_columns]
-    df_ordered = df[final_columns].copy()
+    df_ordered = df[main_columns].copy()
 
     if not include_defenses:
         df_ordered = df_ordered[df_ordered["position"] != "DEF"]
@@ -115,10 +115,10 @@ def clean_df(df, include_defenses=True):
 
     # Sort by full_name + most recent update and drop duplicates
     df_sorted = df_ordered.sort_values(["full_name", "team_changed_at"], ascending=[True, False])
-    df_unique = df_sorted.drop_duplicates(subset="full_name", keep="first")
+    df_unique = df_sorted.drop_duplicates(subset="full_name", keep="first").copy()
 
     # Add cleaned name for merging (normalized)
-    df_unique["full_name_clean"] = df_unique["full_name"].apply(strip_suffix).str.lower().str.strip()
+    df_unique.loc[:, "full_name_clean"] = df_unique["full_name"].apply(strip_suffix).str.lower().str.strip()
 
     df_unique.to_csv("nfl_players_ordered.csv", index=False)
     print("💾 Saved nfl_players_ordered.csv (deduplicated & cleaned)")
@@ -184,6 +184,75 @@ def join_check(df_left, df_right, use_fuzzy=True):
         else:
             print("Unmatched names (exact merge):", unmatched_left["PLAYER NAME"].tolist())
 
+# ===============================
+# Add Information
+# ===============================
+def add_is_rookie_col(df):
+    """
+    Adds a boolean column 'is_rookie' to the dataframe.
+    A player is considered a rookie if years_exp == 0.
+    """
+    if "years_exp" not in df.columns:
+        raise ValueError("Column 'years_exp' not found in dataframe. Did you merge correctly?")
+    
+    df = df.copy()
+    df["is_rookie"] = df["years_exp"].fillna(-1).astype(int) == 0
+    return df
+
+def add_is_lottery_ticket_col(df, lottery_ticket_names):
+    """
+    Adds a boolean column 'is_lottery_ticket' to the dataframe.
+    A player is considered a lottery ticket if their full_name 
+    appears in the provided list `lottery_ticket_names`.
+    """
+    if "full_name" not in df.columns:
+        raise ValueError("Column 'full_name' not found in dataframe.")
+    
+    df = df.copy()
+    # Normalize both df names and provided names for consistency
+    normalized_names = [strip_suffix(name).lower().strip() for name in lottery_ticket_names]
+    df["is_lottery_ticket"] = df["full_name_clean"].isin(normalized_names)
+    return df
+
+def add_handcuff_col(df, handcuff_pairs):
+    """
+    Adds a 'handcuff' column to the dataframe.
+
+    handcuff_pairs: list of tuples
+        Example: [("James Conner", "Trey Benson"), ("Bijan Robinson", "Tyler Allgeier")]
+
+    - If a player is a starter in handcuff_pairs, the 'handcuff' column 
+      will contain the backup's name.
+    - All other players get NaN in the 'handcuff' column.
+    """
+    if "full_name" not in df.columns:
+        raise ValueError("Column 'full_name' not found in dataframe.")
+
+    df = df.copy()
+
+    # Build a lookup map: starter_clean -> handcuff_name
+    handcuff_map = {
+        strip_suffix(starter).lower().strip(): handcuff
+        for starter, handcuff in handcuff_pairs
+    }
+
+    # Assign only to starters
+    df["handcuff"] = df["full_name_clean"].map(handcuff_map)
+
+    return df
+
+def add_fantasypros_sleeper_col(df, sleeper_list):
+    """
+    Adds a boolean column 'is_fantasypros_sleeper' to the dataframe.
+    A player is considered a sleeper if their name appears in sleeper_list.
+    """
+    if "full_name_clean" not in df.columns:
+        raise ValueError("Column 'full_name_clean' not found. Run clean_df() first.")
+
+    df = df.copy()
+    normalized_names = [strip_suffix(name).lower().strip() for name in sleeper_list]
+    df["is_fantasypros_sleeper"] = df["full_name_clean"].isin(normalized_names)
+    return df
 
 # ===============================
 # Main Execution
@@ -205,6 +274,86 @@ if __name__ == "__main__":
     fantasy_pros_rankings_ppr = fantasy_pros_rankings_ppr[~fantasy_pros_rankings_ppr["PLAYER NAME"].isin(NFL_TEAMS)]
 
     # Perform fuzzy merge and check unmatched
+    lottery_list = [
+        "Trevor Lawrence",
+        "C.J. Stroud",
+        "J.J. McCarthy",
+        "Jacory Croskey-Merritt",
+        "Rashid Shaheed",
+        "Luther Burden III",
+        "Cedric Tillman",
+        "Jaydon Blue",
+        "Marquise Brown",
+        "DeMario Douglas",
+        "Isaac Guerendo",
+        "Chig Okonkwo",
+        "Woody Marks",
+        "Will Shipley",
+        "Adonai Mitchell",
+        "Dyami Brown",
+        "Elijah Arroyo",
+        "Isaac TeSlaa",
+        "Kayshon Boutte",
+        "Darren Waller",
+        ]
+
+    handcuffs = [
+        ("James Conner", "Trey Benson"),
+        ("Bijan Robinson", "Tyler Allgeier"),
+        ("Derrick Henry", "Keaton Mitchell"),
+        ("James Cook", "Ray Davis"),
+        ("Chuba Hubbard", "Rico Dowdle"),
+        ("D'Andre Swift", "Kyle Monangai"),
+        ("Chase Brown", "Tahj Brooks"),
+        ("Jerome Ford", "Dylan Sampson"),
+        ("Javonte Williams", "Jaydon Blue"),
+        ("J.K. Dobbins", "RJ Harvey"),
+        ("Jahmyr Gibbs", "David Montgomery"),
+        ("Josh Jacobs", "Chris Brooks"),
+        ("Nick Chubb", "Dameon Pierce"),
+        ("Jonathan Taylor", "DJ Giddens"),
+        ("Travis Etienne Jr.", "Tank Bigsby"),
+        ("Isiah Pacheco", "Kareem Hunt"),
+        ("Omarion Hampton", "Najee Harris"),
+        ("Kyren Williams", "Blake Corum"),
+        ("Ashton Jeanty", "Zamir White"),
+        ("De'Von Achane", "Ollie Gordon II"),
+        ("Aaron Jones Sr.", "Jordan Mason"),
+        ("TreVeyon Henderson", "Rhamondre Stevenson"),
+        ("Alvin Kamara", "Kendre Miller"),
+        ("Tyrone Tracy Jr.", "Cam Skattebo"),
+        ("Breece Hall", "Braelon Allen"),
+        ("Saquon Barkley", "Will Shipley"),
+        ("Jaylen Warren", "Kaleb Johnson"),
+        ("Kenneth Walker III", "Zach Charbonnet"),
+        ("Christian McCaffrey", "Brian Robinson Jr."),
+        ("Bucky Irving", "Rachaad White"),
+        ("Tony Pollard", "Tyjae Spears"),
+        ("Jacory Croskey-Merritt", "Austin Ekeler")
+    ]
+    
+    sleepers = [
+        "Jacory Croskey-Merritt",
+        "Ollie Gordon II",
+        "Dyami Brown",
+        "Dont'e Thornton Jr.",
+        "Tory Horton",
+        "Sean Tucker",
+        "Tyler Shough",
+        "Isaiah Davis",
+        "Shedeur Sanders",
+        "Jaylin Lane",
+
+    ]
+
     merged = join_to_get_ranked_order(fantasy_pros_rankings_ppr, df_cleaned)
-    merged.to_csv("output.csv")
+    merged = add_is_rookie_col(merged)
+    merged = add_is_lottery_ticket_col(merged, lottery_list)
+    merged = add_handcuff_col(merged, handcuffs)
+    merged = add_fantasypros_sleeper_col(merged, sleepers)
+    merged.to_csv("output.csv", index=False)
+    print("Output file!!")
     join_check(fantasy_pros_rankings_ppr, df_cleaned)
+
+
+
