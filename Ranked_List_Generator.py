@@ -15,8 +15,8 @@ import re
 load_dotenv()
 print("Loaded SLEEPER_USERNAME:", os.getenv("SLEEPER_USERNAME"))
 
-CSV_FILE = "nfl_players.csv"
-DATE_FILE = "last_retrieval.txt"
+CSV_FILE = "Input_data/nfl_players.csv"
+DATE_FILE = "Input_data/last_retrieval.txt"
 
 NFL_TEAMS = [
     "Arizona Cardinals","Atlanta Falcons","Baltimore Ravens","Buffalo Bills","Carolina Panthers",
@@ -120,7 +120,7 @@ def clean_df(df, include_defenses=True):
     # Add cleaned name for merging (normalized)
     df_unique.loc[:, "full_name_clean"] = df_unique["full_name"].apply(strip_suffix).str.lower().str.strip()
 
-    df_unique.to_csv("nfl_players_ordered.csv", index=False)
+    df_unique.to_csv("Input_data/nfl_players_ordered.csv", index=False)
     print("💾 Saved nfl_players_ordered.csv (deduplicated & cleaned)")
 
     return df_unique
@@ -265,11 +265,11 @@ if __name__ == "__main__":
 
     # Check duplicates
     duplicates = df_cleaned[df_cleaned.duplicated(subset="full_name", keep=False)]
-    print(f"Found {len(duplicates)} duplicate rows:")
-    print(duplicates[["full_name", "team", "position"]])
+    # print(f"Found {len(duplicates)} duplicate rows:")
+    # print(duplicates[["full_name", "team", "position"]])
 
     # Load FantasyPros rankings and filter out NFL team defenses
-    fantasy_pros_rankings_ppr = pd.read_csv("FantasyPros_2025_Draft_ALL_Rankings.csv")
+    fantasy_pros_rankings_ppr = pd.read_csv("Input_data/FantasyPros_2025_Draft_ALL_Rankings.csv")
     fantasy_pros_rankings_ppr["PLAYER NAME_CLEAN"] = fantasy_pros_rankings_ppr["PLAYER NAME"].apply(strip_suffix).str.lower().str.strip()
     fantasy_pros_rankings_ppr = fantasy_pros_rankings_ppr[~fantasy_pros_rankings_ppr["PLAYER NAME"].isin(NFL_TEAMS)]
 
@@ -352,7 +352,8 @@ if __name__ == "__main__":
     merged = add_handcuff_col(merged, handcuffs)
     merged = add_fantasypros_sleeper_col(merged, sleepers)
     merged.to_csv("output.csv", index=False)
-    print("Output file!!")
+    print("output.csv file created!!")
+    print(list(merged.columns))
     join_check(fantasy_pros_rankings_ppr, df_cleaned)
 
 
