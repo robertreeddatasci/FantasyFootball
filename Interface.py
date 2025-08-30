@@ -40,17 +40,19 @@ st.markdown(
 try:
     df = pd.read_csv("output.csv")
     cols_to_keep = [
-        'RK', 'TIERS', 'PLAYER NAME', 'TEAM', 'POS', 'BYE WEEK',
-        'SOS SEASON', 'ECR VS. ADP', 'handcuff', 'is_rookie',
-        'is_lottery_ticket', 'is_fantasypros_sleeper'
+        'RK', 'TIERS', 'PLAYER NAME', 'TEAM', 'POS', 'BYE',
+        'SOS', 'ECR VS ADP', 'num', 'RK_DIFF', 'handcuff', 'is_rookie',
+        'is_lottery_ticket', 'is_fantasypros_sleeper', 
     ]
     df = df[cols_to_keep]
 
     rename_dict = {
         'is_rookie':'R',
         'is_lottery_ticket': 'LT',
-        'is_fantasypros_sleeper': 'SLPR'
+        'is_fantasypros_sleeper': 'SLPR',
+        'num': 'ESPN'
     }
+
     df = df.rename(columns=rename_dict)
 except FileNotFoundError:
     st.error("`output.csv` not found. Please ensure the file is in the same directory.")

@@ -254,6 +254,20 @@ def add_fantasypros_sleeper_col(df, sleeper_list):
     df["is_fantasypros_sleeper"] = df["full_name_clean"].isin(normalized_names)
     return df
 
+def add_espn_rankings(df_1, df_2):
+    df_merged = pd.merge(
+            df_1,
+            df_2,
+            how="left",
+            left_on="PLAYER NAME",
+            right_on="player"
+        )
+    
+    df_merged["RK_DIFF"] = df_merged["RK"] - df_merged["num"]
+
+    return df_merged
+    # Want to left join df_1[PLAYER NAME] with df[player]
+
 # ===============================
 # Main Execution
 # ===============================
@@ -272,6 +286,9 @@ if __name__ == "__main__":
     fantasy_pros_rankings_ppr = pd.read_csv("Input_data/FantasyPros_2025_Draft_ALL_Rankings.csv")
     fantasy_pros_rankings_ppr["PLAYER NAME_CLEAN"] = fantasy_pros_rankings_ppr["PLAYER NAME"].apply(strip_suffix).str.lower().str.strip()
     fantasy_pros_rankings_ppr = fantasy_pros_rankings_ppr[~fantasy_pros_rankings_ppr["PLAYER NAME"].isin(NFL_TEAMS)]
+
+    # Load ESPN rankings
+    espn_rankings = pd.read_csv("Input_data/ESPN players Order.csv")
 
     # Perform fuzzy merge and check unmatched
     lottery_list = [
@@ -351,6 +368,7 @@ if __name__ == "__main__":
     merged = add_is_lottery_ticket_col(merged, lottery_list)
     merged = add_handcuff_col(merged, handcuffs)
     merged = add_fantasypros_sleeper_col(merged, sleepers)
+    merged = add_espn_rankings(merged, espn_rankings)
     merged.to_csv("output.csv", index=False)
     print("output.csv file created!!")
     print(list(merged.columns))
