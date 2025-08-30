@@ -360,6 +360,22 @@ if __name__ == "__main__":
         "Isaiah Davis",
         "Shedeur Sanders",
         "Jaylin Lane",
+        "Jordan Mason",
+        "Zach Charbonnet",
+        "Dylan Sampson",
+        "Brian Robinson Jr.",
+        "Kyle Monangai",
+        "Woody Marks",
+        "DeMario Douglas",
+        "Marvin Mims Jr.",
+        "Jayden Higgins",
+        "Jalen Coker",
+        "Roman Wilson",
+        "Dont'e Thornton",
+        "Jaylin Lane",
+        "Elic Ayomanor",
+        "Isaac Teslaa",
+        "Brenton Strange"
 
     ]
 
