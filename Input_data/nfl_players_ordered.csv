@@ -1026,7 +1026,7 @@ player_id,full_name,first_name,last_name,position,team,team_abbr,fantasy_positio
 12538,Brady Cook,Brady,Cook,QB,NYJ,,['QB'],True,Active,23.0,74,215.0,Missouri,0.0,,,,,,,,,2001-10-12,,brady cook
 12240,Brady Latham,Brady,Latham,OL,,,['OL'],True,Active,24.0,77,312.0,Arkansas,1.0,,,,,,,,,2000-09-30,,brady latham
 671,Brady Quinn,Brady,Quinn,QB,,,['QB'],False,Inactive,32.0,"6'4""",235.0,Notre Dame,7.0,,,,,,,,,1984-10-27,,brady quinn
-11280,Brady Russell,Brady,Russell,TE,SEA,,['TE'],True,Active,26.0,75,250.0,Colorado,2.0,,,,,,,,,1998-08-31,,brady russell
+11280,Brady Russell,Brady,Russell,TE,SEA,,['TE'],True,Active,27.0,75,250.0,Colorado,2.0,,,,,,,,,1998-08-31,,brady russell
 4761,Brady Sheldon,Brady,Sheldon,LB,,,['LB'],True,Active,28.0,77,231.0,Ferris State,5.0,,,,,,,,,1993-02-23,,brady sheldon
 12303,Brady Weeks,Brady,Weeks,LS,,,['LS'],True,Active,,72,225.0,Minnesota,1.0,,,,,,,,,,,brady weeks
 12677,Bradyn Swinson,Bradyn,Swinson,DE,NE,,['DL'],True,Active,23.0,76,255.0,LSU,0.0,,,,,,,,,2002-07-04,,bradyn swinson
@@ -1768,7 +1768,7 @@ player_id,full_name,first_name,last_name,position,team,team_abbr,fantasy_positio
 12137,Charles Woods,Charles,Woods,CB,NE,,['DB'],True,Active,25.0,71,185.0,SMU,1.0,,,,,,,,,2000-06-17,,charles woods
 100,Charles Woodson,Charles,Woodson,FS,,,['DB'],False,Inactive,43.0,"6'1""",210.0,Michigan,22.0,,,,,,,,,1976-10-07,,charles woodson
 8198,Charleston Rambo,Charleston,Rambo,WR,,,['WR'],True,Inactive,24.0,73,185.0,Miami (FL),2.0,Questionable,,Undisclosed,,,,,,1999-08-10,,charleston rambo
-2305,Charley Hughlett,Charley,Hughlett,LS,,,['LS'],True,Active,35.0,76,251.0,UCF,13.0,,,,,,,,,1990-05-16,,charley hughlett
+2305,Charley Hughlett,Charley,Hughlett,LS,PHI,,['LS'],True,Active,35.0,76,251.0,UCF,13.0,,,,,,,,,1990-05-16,,charley hughlett
 7115,Charlie Heck,Charlie,Heck,T,TB,,"['OL', 'OT']",True,Active,28.0,80,311.0,North Carolina,5.0,,,,,,,,,1996-11-20,,charlie heck
 10228,Charlie Jones,Charlie,Jones,WR,CIN,,['WR'],True,Active,26.0,72,190.0,Purdue,2.0,,,,,,,,,1998-10-29,,charlie jones
 8127,Charlie Kolar,Charlie,Kolar,TE,BAL,,['TE'],True,Active,26.0,78,265.0,Iowa State,3.0,,,,,,,,,1999-02-10,,charlie kolar
@@ -5227,7 +5227,7 @@ player_id,full_name,first_name,last_name,position,team,team_abbr,fantasy_positio
 1847,Jemea Thomas,Jemea,Thomas,CB,,,['DB'],False,Inactive,27.0,"5'9""",192.0,Georgia Tech,1.0,,,,,,,,,1990-04-07,,jemea thomas
 1955,Jeoffrey Pagan,Jeoffrey,Pagan,DE,,,['DL'],False,Inactive,28.0,"6'3""",310.0,Alabama,6.0,,,,,,,,,1992-06-10,,jeoffrey pagan
 8410,Jequez Ezzard,Jequez,Ezzard,WR,,,['WR'],True,Active,,70,195.0,Sam Houston State,1.0,Questionable,,Undisclosed,,,,,,,,jequez ezzard
-11699,Jer'Zhan Newton,Jer'Zhan,Newton,DL,WAS,,['DL'],True,Active,22.0,74,295.0,Illinois,1.0,,,,,,,,,2002-08-31,,jer'zhan newton
+11699,Jer'Zhan Newton,Jer'Zhan,Newton,DL,WAS,,['DL'],True,Active,23.0,74,295.0,Illinois,1.0,,,,,,,,,2002-08-31,,jer'zhan newton
 6671,Jerald Foster,Jerald,Foster,G,,,['OL'],True,Active,26.0,75,310.0,Nebraska,3.0,,,,,,,,,1995-09-14,,jerald foster
 3283,Jerald Hawkins,Jerald,Hawkins,OT,,,"['OL', 'OT']",True,Inactive,29.0,78,305.0,LSU,6.0,Questionable,,Undisclosed,,,,,,1993-10-16,,jerald hawkins
 3791,Jered Bell,Jered,Bell,S,,,['DB'],False,Inactive,26.0,"6'1""",205.0,Colorado,0.0,,,,,,,,,1992-01-19,,jered bell
@@ -6054,7 +6054,7 @@ player_id,full_name,first_name,last_name,position,team,team_abbr,fantasy_positio
 3037,Josue Matias,Josue,Matias,G,,,['OL'],True,Inactive,26.0,"6'5""",309.0,Florida State,4.0,,,,,,,,,1993-01-06,,josue matias
 12415,Jotham Russell,Jotham,Russell,LB,,,['LB'],True,Active,21.0,76,239.0,,1.0,,,,,,,,,2003-06-08,,jotham russell
 11402,Jourdan Heilig,Jourdan,Heilig,LB,,,['LB'],True,Active,22.0,74,218.0,Appalachian State,1.0,,,,,,,,,2001-04-25,,jourdan heilig
-4129,Jourdan Lewis,Jourdan,Lewis,CB,JAX,,['DB'],True,Active,29.0,70,190.0,Michigan,8.0,,,,,,,,,1995-08-31,,jourdan lewis
+4129,Jourdan Lewis,Jourdan,Lewis,CB,JAX,,['DB'],True,Active,30.0,70,190.0,Michigan,8.0,,,,,,,,,1995-08-31,,jourdan lewis
 7300,Jovahn Fair,Jovahn,Fair,G,,,['OL'],True,Active,24.0,74,315.0,Temple,2.0,,,,,,,,,1997-06-25,,jovahn fair
 7914,Jovan Grant,Jovan,Grant,DB,,,['DB'],True,Active,24.0,73,210.0,Merrimack,1.0,,,,,,,,,1997-12-09,,jovan grant
 8067,Jovan Swann,Jovan,Swann,DE,,,['DL'],True,Active,,74,271.0,Indiana,1.0,,,,,,,,,,,jovan swann
@@ -8223,7 +8223,7 @@ player_id,full_name,first_name,last_name,position,team,team_abbr,fantasy_positio
 12478,Nick Nash,Nick,Nash,WR,ATL,,['WR'],True,Active,25.0,75,195.0,San Jose State,0.0,,,,,,,,,2000-08-02,,nick nash
 6078,Nick Natour,Nick,Natour,G,,,['OL'],True,Inactive,,"6'4""",274.0,SMU,0.0,,,,,,,,,,,nick natour
 5382,Nick Nelson,Nick,Nelson,CB,,,['DB'],True,Active,25.0,71,205.0,Wisconsin,4.0,Questionable,,Undisclosed,,,,,,1996-10-16,,nick nelson
-7807,Nick Niemann,Nick,Niemann,LB,,,['LB'],True,Active,27.0,75,234.0,Iowa,4.0,,,,,,,,,1997-12-02,,nick niemann
+7807,Nick Niemann,Nick,Niemann,LB,GB,,['LB'],True,Active,27.0,75,234.0,Iowa,4.0,,,,,,,,,1997-12-02,,nick niemann
 168,Nick Novak,Nick,Novak,K,,,['K'],False,Inactive,39.0,"6'0""",198.0,Maryland,15.0,,,,,,,,,1981-08-21,,nick novak
 2495,Nick O'Leary,Nick,O'Leary,TE,,,['TE'],True,Active,29.0,75,252.0,Florida State,7.0,Questionable,Surgery,Chest,,,,,,1992-08-31,,nick o'leary
 5630,Nick Orr,Nick,Orr,SS,,,['DB'],True,Active,26.0,70,187.0,Texas Christian,4.0,,,,,,,,,1995-10-06,,nick orr
@@ -8761,7 +8761,7 @@ player_id,full_name,first_name,last_name,position,team,team_abbr,fantasy_positio
 2936,Rasheed Williams,Rasheed,Williams,RB,,,['RB'],True,Active,,73,215.0,Alfred State,0.0,,,,,,,,,,,rasheed williams
 5059,Rasheem Green,Rasheem,Green,DE,,,"['DL', 'LB']",True,Active,27.0,76,279.0,USC,6.0,Questionable,,Undisclosed,,,,,,1997-05-15,,rasheem green
 11570,Rasheen Ali,Rasheen,Ali,RB,BAL,,['RB'],True,Active,24.0,71,210.0,Marshall,1.0,,,,,,,,,2001-02-16,,rasheen ali
-8676,Rashid Shaheed,Rashid,Shaheed,WR,NO,,['WR'],True,Active,26.0,72,180.0,Weber State,3.0,,,,,,,,,1998-08-31,,rashid shaheed
+8676,Rashid Shaheed,Rashid,Shaheed,WR,NO,,['WR'],True,Active,27.0,72,180.0,Weber State,3.0,,,,,,,,,1998-08-31,,rashid shaheed
 7571,Rashod Bateman,Rashod,Bateman,WR,BAL,,['WR'],True,Active,25.0,73,193.0,Minnesota,4.0,,,,,,,,,1999-11-29,,rashod bateman
 7459,Rashod Berry,Rashod,Berry,LB,,,['LB'],True,Active,26.0,76,255.0,Ohio State,3.0,,,,,,,,,1996-10-14,,rashod berry
 3545,Rashod Hill,Rashod,Hill,T,,,"['OL', 'OT']",True,Active,30.0,78,309.0,Southern Miss,6.0,,,,,,,,,1992-01-12,,rashod hill
@@ -9312,7 +9312,7 @@ player_id,full_name,first_name,last_name,position,team,team_abbr,fantasy_positio
 4866,Saquon Barkley,Saquon,Barkley,RB,PHI,,['RB'],True,Active,28.0,72,233.0,Penn State,7.0,,,,,,,,,1997-02-09,,saquon barkley
 3092,Sashi Brown,Sashi,Brown,,,,,False,Inactive,,,,,0.0,,,,,,,,,,,sashi brown
 11810,Sataoa Laumea,Sataoa,Laumea,OL,SEA,,['OL'],True,Active,24.0,76,319.0,Utah,1.0,,,,,,,,,2001-01-13,,sataoa laumea
-8290,Sauce Gardner,Sauce,Gardner,DB,NYJ,,['DB'],True,Active,24.0,75,190.0,Cincinnati,3.0,,,,,,,,,2000-08-31,,sauce gardner
+8290,Sauce Gardner,Sauce,Gardner,DB,NYJ,,['DB'],True,Active,25.0,75,190.0,Cincinnati,3.0,,,,,,,,,2000-08-31,,sauce gardner
 11876,Savion Jackson,Savion,Jackson,DE,,,['DL'],True,Active,25.0,74,290.0,North Carolina State,1.0,,,,,,,,,1999-11-09,,savion jackson
 12833,Savion Washington,Savion,Washington,OL,LAC,,['OL'],True,Active,,81,340.0,Syracuse,0.0,PUP,,Undisclosed,,,,,,,,savion washington
 12482,Savion Williams,Savion,Williams,WR,GB,,['WR'],True,Active,23.0,76,222.0,TCU,0.0,Questionable,Strain,Hamstring,,,,,,2001-11-22,,savion williams

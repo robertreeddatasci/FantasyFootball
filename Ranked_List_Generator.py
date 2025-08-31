@@ -260,7 +260,7 @@ def add_espn_rankings(df_1, df_2):
             df_2,
             how="left",
             left_on="PLAYER NAME",
-            right_on="player"
+            right_on="name"
         )
     
     df_merged["RK_DIFF"] = df_merged["RK"] - df_merged["num"]
